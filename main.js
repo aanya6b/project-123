@@ -1,3 +1,5 @@
+difference = 0;
+
 function setup()
 {
     video = createCapture(VIDEO);
@@ -22,5 +24,18 @@ function gotPoses(results)
     if(results.length > 0)
     {
         console.log(results);
+
+        leftWristX = results[0].pose.leftWrist.x;
+        rightWristX = results[0].pose.rightWrist.x;
+
+        difference = floor(leftWristX-rightWristX);
     }
+}
+
+function draw()
+{
+    background("lightpink");
+    textSize(difference);
+    fill("pink");
+    text("AANYA", 0, 300);
 }
